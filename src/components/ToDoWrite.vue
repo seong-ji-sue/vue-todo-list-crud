@@ -3,14 +3,15 @@
     <div class="input-wrapper">
       <input
           :placeholder="showPlaceholderText"
-          type="text"
+          type="search"
           class="write-todo-input"
           :value="todoText"
           @input="onInput"
           @keyup.enter="onRegister"
-      />
+      >
       <span v-if="error" class="error-style">{{error}}</span>
     </div>
+    <button class="clear-button" @click="onClear">내용 제거</button>
     <button class="add-button" @click="onRegister">할일 추가</button>
   </div>
 </template>
@@ -40,9 +41,12 @@ export default {
       }
       this.todoText=value
     },
+    onClear(){
+      this.todoText=''
+    },
     onRegister() {
       this.$emit("register-to-do",this.todoText)
-      this.todoText=''
+      this.onClear()
     },
   },
 }
@@ -65,6 +69,14 @@ export default {
   margin-right: 10px;
 }
 .add-button{
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: aqua;
+  height: 80%;
+}
+.clear-button{
   border: 2px solid black;
   border-radius: 3px;
   padding: 10px;
