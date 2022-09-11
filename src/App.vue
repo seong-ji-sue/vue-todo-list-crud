@@ -18,15 +18,14 @@ export default {
   },
   data() {
     return {
-      todoItems: [
-        {num:1, content:"이상한 변호사 우영우 보기",addDate:"2012-02-02",updateDate:"2012-02-02",updateAt:'N',deleteAt:'N'},
-      ]
+      todoItems: []
     }
   },
   methods: {
     registerToDo(todoText) {
+      console.log("registerToDo")
       //TODO:날짜 데이터 luxon 이용하기
-      const data = new Date().toLocaleDateString().replace(/\./g, ".");
+      const data = new Date().toLocaleString().replace(/\./g, ".");
       const todo = {
         num:this.todoItems.length+1,
         content:todoText,
